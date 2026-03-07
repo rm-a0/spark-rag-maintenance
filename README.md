@@ -2,9 +2,7 @@
 
 A predictive maintenance pipeline for turbofan jet engines built to get familiar with **PySpark**, **XGBoost**, and **RAG pipelines** in a realistic ML engineering context.
 
-Uses the [NASA C-MAPSS dataset](https://data.nasa.gov/Aerospace/CMAPSS-Jet-Engine-Simulated-Data/ff5v-kuh6) — the industry standard benchmark for remaining useful life prediction.
-
----
+Uses the [NASA C-MAPSS dataset](https://data.nasa.gov/Aerospace/CMAPSS-Jet-Engine-Simulated-Data/ff5v-kuh6) - the industry standard benchmark for remaining useful life prediction.
 
 ## What it does
 
@@ -19,21 +17,16 @@ python main.py --pipeline          # Spark: raw CSV → Parquet with rolling fea
 python main.py --train             # XGBoost: train regressor + classifier
 python main.py --predict --engine 42   # predict RUL + optional RAG diagnostic
 ```
-
----
-
 ## Stack
 
 | Layer | Technology |
-|---|---|---|
+|---|---|
 | Feature engineering | PySpark | 
 | Storage | Apache Parquet | 
 | ML | XGBoost | 
 | RAG | LlamaIndex + HuggingFace embeddings | 
 | Config | Pydantic Settings | 
 | Environment | uv |
-
----
 
 ## Project structure
 
@@ -54,8 +47,6 @@ turbine-sentinel/
 main.py                       # CLI entry point
 ```
 
----
-
 ## Setup
 
 Requires Python ≥ 3.11 and Java 11 or 17 (for PySpark).
@@ -67,8 +58,6 @@ uv sync
 ```
 
 Download the C-MAPSS dataset and place the `FD001` files in `data/raw/`. Optionally add a turbine maintenance PDF to `manuals/` for RAG diagnostics.
-
----
 
 ## Usage
 
@@ -101,8 +90,6 @@ Sample output:
 ==================================================
 ```
 
----
-
 ## Features engineered
 
 For each of the 13 informative sensors, three temporal features are added per cycle:
@@ -115,8 +102,6 @@ For each of the 13 informative sensors, three temporal features are added per cy
 
 Sensors with near-zero variance across all engines (1, 5, 6, 9, 10, 16, 18, 19) are excluded.
 
----
-
 ## Model performance
 
 Evaluated on a 80:20 split of the FD001 training set.
@@ -125,8 +110,6 @@ Evaluated on a 80:20 split of the FD001 training set.
 |---|---|---|
 | RUL Regressor | RMSE | ~18 cycles |
 | Failure Classifier | ROC-AUC | ~0.97 |
-
----
 
 ## Data
 
