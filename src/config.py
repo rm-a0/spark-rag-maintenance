@@ -10,7 +10,11 @@ class SparkConfig(BaseModel):
 
 class FeatureConfig(BaseModel):
     rolling_window:     int = 5
-    sensor_columns:     list[str] = [f"sensor_{i}" for i in range(1, 22)]
+    sensor_columns: list[str] = [
+        "sensor_2",  "sensor_3",  "sensor_4",  "sensor_7",
+        "sensor_8",  "sensor_11", "sensor_12", "sensor_13",
+        "sensor_14", "sensor_15", "sensor_17", "sensor_20", "sensor_21"
+    ] # sensors with non-zero variance
 
 class XGBRegressorConfig(BaseModel):
     n_estimators:       int = 300
