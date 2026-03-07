@@ -3,13 +3,13 @@ from pathlib import Path
 from pydantic_settings import BaseSettings
 
 class SparkConfig(BaseModel):
-    master:         str = "local[*]"
-    driver_memory:  str = "4g"
-    log_level:      str = "WARN"
+    master:             str = "local[*]"
+    driver_memory:      str = "4g"
+    log_level:          str = "WARN"
 
 class FeatureConfig(BaseModel):
-    rolling_window: int = 5
-    sensor_columns: list[str] = [f"sensor_{i}" for i in range(1, 22)]
+    rolling_window:     int = 5
+    sensor_columns:     list[str] = [f"sensor_{i}" for i in range(1, 22)]
 
 class XGBRegressorConfig(BaseModel):
     n_estimators:       int = 300
@@ -27,9 +27,9 @@ class XGBClassifierConfig(BaseModel):
     random_state:       int = 42
 
 class RAGConfig(BaseModel):
-    embed_model:       str = "BAAI/bge-small-en-v1.5"
-    llm_model:         str = "gemini-3-flash-preview"
-    trigger_threshold: float = 0.4
+    embed_model:        str = "BAAI/bge-small-en-v1.5"
+    llm_model:          str = "gemini-3-flash-preview"
+    trigger_threshold:  float = 0.4
 
 class Settings(BaseSettings):
     data_raw_dir:       Path = Path("data/raw")
@@ -38,11 +38,11 @@ class Settings(BaseSettings):
     manuals_dir:        Path = Path("manuals")
     logs_dir:           Path = Path("logs")
 
-    spark:          SparkConfig = SparkConfig()
-    features:       FeatureConfig = FeatureConfig()
-    xgb_regressor:  XGBRegressorConfig = XGBRegressorConfig()
-    xgb_classifier: XGBClassifierConfig = XGBClassifierConfig()
-    rag:            RAGConfig = RAGConfig()
+    spark:              SparkConfig = SparkConfig()
+    features:           FeatureConfig = FeatureConfig()
+    xgb_regressor:      XGBRegressorConfig = XGBRegressorConfig()
+    xgb_classifier:     XGBClassifierConfig = XGBClassifierConfig()
+    rag:                RAGConfig = RAGConfig()
 
     @computed_field
     @property
