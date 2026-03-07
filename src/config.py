@@ -4,6 +4,7 @@ from pydantic_settings import BaseSettings
 
 class SparkConfig(BaseModel):
     master:             str = "local[*]"
+    app_name:           str = "RUL_Prediction"
     driver_memory:      str = "4g"
     log_level:          str = "WARN"
 
