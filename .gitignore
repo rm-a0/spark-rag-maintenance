@@ -20,3 +20,6 @@ models/
 
 # Env
 .env
+
+# artifacts
+artifacts/

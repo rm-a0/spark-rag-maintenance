@@ -33,7 +33,7 @@ class XGBClassifierConfig(BaseModel):
 
 class RAGConfig(BaseModel):
     embed_model:        str = "BAAI/bge-small-en-v1.5"
-    llm_model:          str = "gemini-3-flash-preview"
+    llm_model:          str = "claude-haiku-4-5-20251001"
     trigger_threshold:  float = 0.4
 
 class Settings(BaseSettings):
