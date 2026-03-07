@@ -17,3 +17,6 @@ data/
 
 # models
 models/
+
+# Env
+.env
